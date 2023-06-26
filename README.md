@@ -47,14 +47,14 @@
 
 - belongs_to :user
 - belongs_to :items
-- belongs_to :addresses
+- has_one :address
 
 ## addresses テーブル
 
 | Column        | Type       | Options                       |
 | -------      | ---------- | ------------------------------ |
 | post_number  | string     | null: false                    |
-| area         | integer    | null: false                    |
+| prefecture_id         | integer    | null: false                    |
 | city_name    | string     | null: false                    |
 | banchi       | string     | null: false                    |
 | build_name   | string     |                                |
@@ -63,4 +63,4 @@
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
