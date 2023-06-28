@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :move_to_index, only: [:index, :create]
+  before_action :set_public_key, only: [:index, :create]
 
   def index
     @item = Item.find(params[:item_id])
@@ -37,11 +38,15 @@ class OrdersController < ApplicationController
 
 
   def pay_item
-    Payjp.api_key = "sk_test_14d6fb28cb1552aa86fa38c8"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
       amount: @item.price[:price],  # 商品の値段
       card: order_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def set_public_key
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
   end
 end
