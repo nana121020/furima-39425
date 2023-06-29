@@ -11,7 +11,7 @@ RSpec.describe Order, type: :model do
     end
   end
 
-  context '内容に問題がある場合' do
+  describe '内容に問題がある場合' do
     it "priceが空では保存ができないこと" do
       @order.price = nil
       @order.valid?
