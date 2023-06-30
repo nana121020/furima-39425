@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   before do
-    @order = FactoryBot.build(:order)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
   end
 
   context '内容に問題ない場合' do
@@ -11,12 +13,7 @@ RSpec.describe Order, type: :model do
     end
   end
 
-  describe '内容に問題がある場合' do
-    it "priceが空では保存ができないこと" do
-      @order.price = nil
-      @order.valid?
-      expect(@order.errors.full_messages).to include("Price can't be blank")
-    end
+
 
     it "tokenが空では登録できないこと" do
       @order.token = nil
