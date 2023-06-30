@@ -88,6 +88,3 @@ group :development do
 end
 
 gem 'gon'
-group :production do
-  gem 'pg'
-end
