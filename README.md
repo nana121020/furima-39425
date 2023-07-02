@@ -14,6 +14,8 @@
 
 ### Association
 - has_many :items
+- has_many :orders
+
 
 ## itemsテーブル
 | Column | Type | Option |
@@ -30,4 +32,35 @@
 | user(FK) | references | null: false, foreign_key: true |
 
 ### Association
+
 - belongs_to :user
+- has_one :order
+
+## orders テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## addresses テーブル
+
+| Column        | Type       | Options                       |
+| -------      | ---------- | ------------------------------ |
+| post_number  | string     | null: false                    |
+| prefecture_id         | integer    | null: false                    |
+| city_name    | string     | null: false                    |
+| banchi       | string     | null: false                    |
+| build_name   | string     |                                |
+| phone_number | string     | null: false                    |
+| order        | references | null: false, foreign_key: true |
+
+### Association
+
+- has_one :order
