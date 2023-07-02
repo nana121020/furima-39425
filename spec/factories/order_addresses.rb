@@ -6,6 +6,6 @@ FactoryBot.define do
     city_name { '東京都' }
     banchi { '1-1' }
     build_name { '北' }
-    phone_number { '090_1111-1111' }
+    phone_number { '09011111111' }
   end
 end
