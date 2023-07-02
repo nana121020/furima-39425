@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
       @order_address.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index, status: :unprocessable_entity
     end
   end
@@ -26,7 +25,7 @@ class OrdersController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-    if  @item.order.present?
+    if  @item.order.present? || @item.user.id == current_user.id
       redirect_to root_path
     end
     unless user_signed_in?
