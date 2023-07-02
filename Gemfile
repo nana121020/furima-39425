@@ -87,4 +87,8 @@ group :development do
   gem 'rubocop', require: false
 end
 
+group :production do
+  gem 'unicorn', '6.1.0'
+end
+
 gem 'gon'
