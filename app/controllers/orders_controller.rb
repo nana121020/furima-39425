@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :move_to_index, only: [:index, :create]
   before_action :set_public_key, only: [:index, :create]
+  before_action :authenticate_user! 
 
   def index
     @order_address = OrderAddress.new
@@ -27,9 +28,6 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     if  @item.order.present? || @item.user == current_user
       redirect_to root_path
-    end
-    unless user_signed_in?
-      redirect_to new_user_session_path
     end
   end
 
