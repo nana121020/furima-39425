@@ -8,7 +8,7 @@ class OrderAddress
     validates :post_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city_name
     validates :banchi
-    validates :phone_number, format: { with: /\A[\d-]{10,11}\z/, message: 'is invalid. Should be 10 to 11 digits' }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid. Should be 10 to 11 digits' }
     validates :item_id
   end
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
