@@ -30,7 +30,7 @@
         <% end %>
       <% else %>
         <% if !@item.order.present? %>
-          <%= link_to '購入画面に進む', item_orders_path(item_id: @item.id), class:"item-red-btn" %>
+          <%= link_to '購入画面に進む', item_orders_path(item_id: @item.id),data: { turbo: false }, class:"item-red-btn" %>
         <% end %>
       <% end %>
     <% end %>
